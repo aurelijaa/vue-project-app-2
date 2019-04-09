@@ -1,28 +1,56 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <!-- <header class="app-header">
+      <h1 class="app-header__headline">Text</h1>
+    </header>  susikurem componenta appheader, cia ji paimportinam ir pa exportiname-->
+    <AppHeader v-bind:date="headerDate">
+      <!-- Vietoje v-bind:date, galima rasyti tiesiog :date -->
+      <!-- Viskas ka cia rasome, bus pakeista vietoje slot, kuris yra AppHeader 
+      Toliau reikia tempalet, je keli slotai su savo namais-->
+      <!-- <template slot="headline">My Day</template> -->
+      <!-- <template slot="subtitle">subtitle</template> -->
+      <template>My Day</template>
+    </AppHeader>
+    <div class="todo-list">
+      <ul class="todo-list__list"></ul>
+    </div>
+    {{newTodo}}
+    <TodoInput v-model="newTodo"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import AppHeader from "@/components/AppHeader";
+import TodoInput from "@/components/Todoinput";
 
 export default {
-  name: 'app',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    AppHeader,
+    TodoInput
+  },
+  data: () => ({
+    newTodo: "null",
+    headerDate: new Date("2018 04 09")
+  })
+
+  // data() {
+  //   return {
+  //     headerDate: new Date("2018 04 09"),
+
+  //   };
+  //}
+};
 </script>
 
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.todo-list {
+  padding: 30px 15px;
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
 }
-</style>
+</style> 
