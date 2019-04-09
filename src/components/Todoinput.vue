@@ -1,20 +1,25 @@
 <template>
-      <div class="todo-list__input">
-        <input :value="value" class="todo-list__input-textfield" type="text" @input="$emit('input',$event.target.value)">
-        <button class="todo-list__input-button" type="submit">Create</button>
-
-    </div>
+  <div class="todo-list__input">
+    <input :value="value" class="todo-list__input-textfield" type="text" @input="handleInput">
+    <!-- @input="$emit('input',$event.target.value)" -->
+    <button class="todo-list__input-button" type="submit">Create</button>
+  </div>
 </template>
 
 <script>
 export default {
-name: 'TodoInput',
-props:{
-  value: {
-    type: String
+  name: "TodoInput",
+  props: {
+    value: {
+      type: String
+    }
+  },
+  methods: {
+    handleInput(event) {
+      this.$emit("input", event.target.value);
+    }
   }
-}
-}
+};
 </script>
 
 <style lang='scss'>
