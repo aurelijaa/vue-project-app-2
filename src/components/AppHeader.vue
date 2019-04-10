@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: "AppHeader",
+  name: 'AppHeader',
   props: {
     date: {
       // type: [Date,String,Number],
@@ -23,7 +23,7 @@ export default {
       default: () => new Date()
     }
   }
-};
+}
 </script>
 
 <style lang ='scss'>
